@@ -1,0 +1,7 @@
+{
+  "id": "helloplayer",
+  "name": "HelloPlayer",
+  "version": "1.0",
+  "authors": ["nikkou"],
+  "main": "nagoya.nikkou.helloplayer"
+}

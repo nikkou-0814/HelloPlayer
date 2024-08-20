@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'nagoya.nikkou'
-version = '1.0'
+version = '$version'
 
 repositories {
     mavenCentral()
@@ -34,10 +34,16 @@ tasks.withType(JavaCompile).configureEach {
     options.release.set(targetJavaVersion)
 }
 
+tasks.withType(Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 def templateSource = file('src/main/templates')
 def templateDest = layout.buildDirectory.dir('generated/sources/templates')
 def generateTemplates = tasks.register('generateTemplates', Copy) { task ->
-    def props = ['version': project.version]
+    def props = [
+            'version': project.version
+    ]
     task.inputs.properties props
 
     task.from templateSource
